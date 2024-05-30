@@ -12,7 +12,7 @@ public class LoanManagement {
 
     @ManyToOne
     @JoinColumn(name ="custumer_id")
-    private Custumer custumer;
+    private Customer custumer;
 
     @ManyToOne
     @JoinColumn(name ="book_id")
@@ -27,7 +27,7 @@ public class LoanManagement {
     public LoanManagement() {
     }
 
-    public LoanManagement(Custumer custumer, Book book, String loanDate, String returnDate) {
+    public LoanManagement(Customer custumer, Book book, String loanDate, String returnDate) {
         this.custumer = custumer;
         this.book = book;
         this.loanDate = loanDate;
@@ -42,11 +42,11 @@ public class LoanManagement {
         this.id = id;
     }
 
-    public Custumer getCustumer() {
+    public Customer getCustumer() {
         return custumer;
     }
 
-    public void setCustumer(Custumer custumer) {
+    public void setCustumer(Customer custumer) {
         this.custumer = custumer;
     }
 
