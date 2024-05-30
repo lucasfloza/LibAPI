@@ -11,8 +11,8 @@ public class LoanManagement {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name ="custumer_id")
-    private Customer custumer;
+    @JoinColumn(name ="customer_id")
+    private Customer customer;
 
     @ManyToOne
     @JoinColumn(name ="book_id")
@@ -27,8 +27,8 @@ public class LoanManagement {
     public LoanManagement() {
     }
 
-    public LoanManagement(Customer custumer, Book book, String loanDate, String returnDate) {
-        this.custumer = custumer;
+    public LoanManagement(Customer customer, Book book, String loanDate, String returnDate) {
+        this.customer = customer;
         this.book = book;
         this.loanDate = loanDate;
         this.returnDate = returnDate;
@@ -42,12 +42,12 @@ public class LoanManagement {
         this.id = id;
     }
 
-    public Customer getCustumer() {
-        return custumer;
+    public Customer getCustomer() {
+        return customer;
     }
 
-    public void setCustumer(Customer custumer) {
-        this.custumer = custumer;
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 
     public Book getBook() {
