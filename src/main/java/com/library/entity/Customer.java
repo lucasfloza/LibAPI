@@ -10,14 +10,16 @@ public class Customer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "full_name")
+    @Column(name = "full_name",nullable = false)
     private String fullName;
 
-    @Column(name="phone_number")
+    @Column(name="phone_number", nullable = false)
     private String phoneNumber;
 
+    @Column(name="email", nullable = false)
     private String email;
 
+    @Column(name="address", nullable = false)
     private String address;
 
 
