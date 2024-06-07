@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/customers")
+@RequestMapping("/customer")
 public class CustomerController {
     private final CustomerService customerService;
 
@@ -20,7 +20,7 @@ public class CustomerController {
 
     @GetMapping("/{idCustomer}")
     public ResponseEntity<Customer> getCustomer(@PathVariable Long idCustomer) {
-        Customer customer = customerService.getByID(idCustomer);
+        Customer customer = customerService.getById(idCustomer);
         return new ResponseEntity<>(customer, HttpStatus.OK);
     }
 

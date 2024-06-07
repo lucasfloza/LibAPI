@@ -42,7 +42,7 @@ public class CustomerService {
         }
     }
 
-    public Customer getByID(Long idCustomer) {
+    public Customer getById(Long idCustomer) {
         Optional<Customer> customer = repository.findById(idCustomer);
 
         if (customer.isEmpty()) {
