@@ -23,8 +23,8 @@ public class BookService {
     public Book getById(Long idBook) {
         Optional<Book> book = repository.findById(idBook);
 
-        if (book.isEmpty()) throw new NotFoundException("There is no book with this ID. Please try " +
-                "again with a valid ID");
+        if (book.isEmpty())
+            throw new NotFoundException("There is no book with this ID. Please try again with a valid ID");
 
         return book.get();
     }
@@ -40,9 +40,8 @@ public class BookService {
 
         if ((book.getAuthor() == null || book.getAuthor().isEmpty()) ||
                 (book.getTitle() == null || book.getTitle().isEmpty()) ||
-                (book.getPublishDate() == null || book.getPublishDate().isEmpty())
-        ) throw new MissingDataException("The request came with the mandatory book data missing or empty, " +
-                "please review the request. (Mandatory attributes: publishDate, author and title)");
+                (book.getPublishDate() == null))
+            throw new MissingDataException("The request came with the mandatory book data missing or empty, " + "please review the request. (Mandatory attributes: publishDate, author and title)");
 
         return repository.save(book);
     }
@@ -50,8 +49,8 @@ public class BookService {
     public Book update(Long idBook, BookDto bookDto) {
         Optional<Book> book = repository.findById(idBook);
 
-        if (book.isEmpty()) throw new NotFoundException("This book ID is not saved in our system. " +
-                "Please enter a valid ID");
+        if (book.isEmpty())
+            throw new NotFoundException("This book ID is not saved in our system. " + "Please enter a valid ID");
 
         Book oldBook = book.get();
         Book newBook = bookDto.toBook();
@@ -72,10 +71,7 @@ public class BookService {
             else oldBook.setPublisher(newBook.getPublisher());
         }
 
-        if (newBook.getPublishDate() != null) {
-            if (newBook.getPublishDate().isEmpty()) throw new MissingDataException(textError);
-            else oldBook.setPublishDate(newBook.getPublishDate());
-        }
+        if (newBook.getPublishDate() != null) oldBook.setPublishDate(newBook.getPublishDate());
 
         if (newBook.getTitle() != null) {
             if (newBook.getTitle().isEmpty()) throw new MissingDataException(textError);
@@ -88,10 +84,9 @@ public class BookService {
     public void delete(Long idBook) {
         Optional<Book> book = repository.findById(idBook);
 
-        if (book.isEmpty()) throw new NotFoundException("This book ID is not saved in our system. " +
-                "Please enter a valid ID");
+        if (book.isEmpty())
+            throw new NotFoundException("This book ID is not saved in our system. Please enter a valid ID");
 
         repository.delete(book.get());
     }
-
 }

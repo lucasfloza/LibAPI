@@ -2,6 +2,8 @@ package com.library.entity;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDate;
+
 @Entity
 @Table(name="tb_book")
 public class Book {
@@ -19,14 +21,14 @@ public class Book {
     private String category;
 
     @Column(name = "publish_date", nullable = false)
-    private String publishDate;
+    private LocalDate publishDate;
 
     private String publisher;
 
     public Book() {
     }
 
-    public Book(String publisher, String publishDate, String category, String author, String title) {
+    public Book(String publisher, LocalDate publishDate, String category, String author, String title) {
         this.publisher = publisher;
         this.publishDate = publishDate;
         this.category = category;
@@ -66,11 +68,11 @@ public class Book {
         this.category = category;
     }
 
-    public String getPublishDate() {
+    public LocalDate getPublishDate() {
         return publishDate;
     }
 
-    public void setPublishDate(String publishDate) {
+    public void setPublishDate(LocalDate publishDate) {
         this.publishDate = publishDate;
     }
 
