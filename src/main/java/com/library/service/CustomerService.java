@@ -61,27 +61,24 @@ public class CustomerService {
         Customer oldCustomer = customer.get();
         Customer newCustomer = customerDto.toCustomer();
 
+        String textError = "The request came with the mandatory customer data missing or empty";
         if(newCustomer.getFullName() != null){
-            if(newCustomer.getFullName().isEmpty()) throw new MissingDataException("The request came with the " +
-                    "mandatory customer data missing or empty");
+            if(newCustomer.getFullName().isEmpty()) throw new MissingDataException(textError);
             else oldCustomer.setFullName(newCustomer.getFullName());
         }
 
         if(newCustomer.getPhoneNumber() != null){
-            if(newCustomer.getPhoneNumber().isEmpty()) throw new MissingDataException("The request came with the " +
-                    "mandatory customer data missing or empty");
+            if(newCustomer.getPhoneNumber().isEmpty()) throw new MissingDataException(textError);
             else oldCustomer.setPhoneNumber(newCustomer.getPhoneNumber());
         }
 
         if(newCustomer.getAddress() != null){
-            if(newCustomer.getAddress().isEmpty()) throw new MissingDataException("The request came with the " +
-                    "mandatory customer data missing or empty");
+            if(newCustomer.getAddress().isEmpty()) throw new MissingDataException(textError);
             else oldCustomer.setAddress(newCustomer.getAddress());
         }
 
         if(newCustomer.getEmail() != null){
-            if(newCustomer.getEmail().isEmpty()) throw new MissingDataException("The request came with the " +
-                    "mandatory customer data missing or empty");
+            if(newCustomer.getEmail().isEmpty()) throw new MissingDataException(textError);
             else oldCustomer.setEmail(newCustomer.getEmail());
         }
 
