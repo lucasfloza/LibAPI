@@ -10,24 +10,23 @@ public class Book {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "title", nullable = false)
     private String title;
 
+    @Column(name = "author", nullable = false)
     private String author;
 
     private String category;
 
-    @Column(name = "publish_date")
+    @Column(name = "publish_date", nullable = false)
     private String publishDate;
 
     private String publisher;
 
-    private Boolean available;
-
     public Book() {
     }
 
-    public Book(Boolean available, String publisher, String publishDate, String category, String author, String title) {
-        this.available = available;
+    public Book(String publisher, String publishDate, String category, String author, String title) {
         this.publisher = publisher;
         this.publishDate = publishDate;
         this.category = category;
@@ -81,13 +80,5 @@ public class Book {
 
     public void setPublisher(String publisher) {
         this.publisher = publisher;
-    }
-
-    public Boolean getAvailable() {
-        return available;
-    }
-
-    public void setAvailable(Boolean available) {
-        this.available = available;
     }
 }
