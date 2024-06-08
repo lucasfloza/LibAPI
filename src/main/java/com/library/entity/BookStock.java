@@ -11,22 +11,25 @@ public class BookStock {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name ="book_id")
+    @JoinColumn(name ="book_id", unique = true)
     private Book book;
 
     @Column(name = "total_quantity")
-    private Integer totalQuantity;
+    private Integer totalQuantity = 0;
 
     @Column(name = "available_quantity")
-    private Integer availableQuantity;
+    private Integer availableQuantity = 0;
 
     public BookStock() {
     }
 
-    public BookStock(Book book, Integer totalQuantity, Integer availableQuantity) {
+    public BookStock(Book book, Integer totalQuantity) {
         this.book = book;
         this.totalQuantity = totalQuantity;
-        this.availableQuantity = availableQuantity;
+    }
+
+    public BookStock(Book book) {
+        this.book = book;
     }
 
     public Long getId() {
