@@ -15,9 +15,11 @@ import java.util.Optional;
 public class BookService {
 
     private final BookRepository repository;
+    private final BookStockService bookStockService;
 
-    public BookService(BookRepository repository) {
+    public BookService(BookRepository repository, BookStockService bookStockService) {
         this.repository = repository;
+        this.bookStockService = bookStockService;
     }
 
     public Book getById(Long idBook) {
@@ -43,7 +45,9 @@ public class BookService {
                 (book.getPublishDate() == null))
             throw new MissingDataException("The request came with the mandatory book data missing or empty, " + "please review the request. (Mandatory attributes: publishDate, author and title)");
 
-        return repository.save(book);
+        Book save = repository.save(book);
+        bookStockService.create(book);
+        return save;
     }
 
     public Book update(Long idBook, BookDto bookDto) {
