@@ -2,6 +2,8 @@ package com.library.entity;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDate;
+
 @Entity
 @Table(name = "tb_loan_management")
 public class LoanManagement {
@@ -11,27 +13,25 @@ public class LoanManagement {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name ="customer_id")
+    @JoinColumn(name = "customer_id")
     private Customer customer;
 
     @ManyToOne
-    @JoinColumn(name ="book_id")
+    @JoinColumn(name = "book_id")
     private Book book;
 
     @Column(name = "loan_date")
-    private String loanDate;
+    private LocalDate loanDate = LocalDate.now();
 
-    @Column(name = "returnDate")
-    private String returnDate;
+    @Column(name = "return_date")
+    private LocalDate returnDate = LocalDate.now().plusDays(14L);
 
     public LoanManagement() {
     }
 
-    public LoanManagement(Customer customer, Book book, String loanDate, String returnDate) {
+    public LoanManagement(Customer customer, Book book) {
         this.customer = customer;
         this.book = book;
-        this.loanDate = loanDate;
-        this.returnDate = returnDate;
     }
 
     public Long getId() {
@@ -58,19 +58,19 @@ public class LoanManagement {
         this.book = book;
     }
 
-    public String getLoanDate() {
+    public LocalDate getLoanDate() {
         return loanDate;
     }
 
-    public void setLoanDate(String loanDate) {
+    public void setLoanDate(LocalDate loanDate) {
         this.loanDate = loanDate;
     }
 
-    public String getReturnDate() {
+    public LocalDate getReturnDate() {
         return returnDate;
     }
 
-    public void setReturnDate(String returnDate) {
+    public void setReturnDate(LocalDate returnDate) {
         this.returnDate = returnDate;
     }
 }

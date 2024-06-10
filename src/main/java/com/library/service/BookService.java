@@ -32,9 +32,7 @@ public class BookService {
     }
 
     public List<Book> getAll() {
-        List<Book> allBooks = repository.findAll();
-
-        return allBooks;
+        return repository.findAll();
     }
 
     public Book create(BookDto bookDto) {

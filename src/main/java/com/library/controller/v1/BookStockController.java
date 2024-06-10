@@ -20,7 +20,7 @@ public class BookStockController {
 
     @GetMapping("/{idStock}")
     public ResponseEntity<BookStock> getBookInStock(@PathVariable Long idStock){
-        BookStock bookStock = stockService.get(idStock);
+        BookStock bookStock = stockService.getById(idStock);
         return new ResponseEntity<>(bookStock, HttpStatus.OK);
     }
 

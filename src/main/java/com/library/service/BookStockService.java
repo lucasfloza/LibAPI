@@ -19,7 +19,7 @@ public class BookStockService {
         this.bookStockRepository = bookStockRepository;
     }
 
-    public BookStock get(Long id) {
+    public BookStock getById(Long id) {
         Optional<BookStock> bookStock = bookStockRepository.findById(id);
 
         if (bookStock.isEmpty())
@@ -67,5 +67,12 @@ public class BookStockService {
         bookStock.setTotalQuantity(totalQuantity);
         bookStock.setAvailableQuantity(totalAvailable);
         return bookStockRepository.save(bookStock);
+    }
+
+    public void removingBookAvailability(Book book){
+        BookStock byBookId = bookStockRepository.findByBookId(book.getId());
+        Integer availableQuantity = byBookId.getAvailableQuantity();
+        byBookId.setAvailableQuantity(availableQuantity-1);
+        bookStockRepository.save(byBookId);
     }
 }

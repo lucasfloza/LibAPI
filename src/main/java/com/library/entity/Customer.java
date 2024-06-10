@@ -22,6 +22,9 @@ public class Customer {
     @Column(name="address", nullable = false)
     private String address;
 
+    @Enumerated(EnumType.STRING)
+    private Status status = Status.ACTIVE;
+
 
     public Customer() {
     }
@@ -31,6 +34,23 @@ public class Customer {
         this.phoneNumber = phoneNumber;
         this.email = email;
         this.address = address;
+    }
+
+    public Customer(Long id, String fullName, String phoneNumber, String email, String address, Status status) {
+        this.id = id;
+        this.fullName = fullName;
+        this.phoneNumber = phoneNumber;
+        this.email = email;
+        this.address = address;
+        this.status = status;
+    }
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
     }
 
     public Long getId() {

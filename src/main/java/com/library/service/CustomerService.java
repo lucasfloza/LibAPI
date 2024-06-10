@@ -22,7 +22,7 @@ public class CustomerService {
     public Customer create(CustomerDto customerDto) {
         Customer newCustomer = customerDto.toCustomer();
 
-        if (    (newCustomer.getFullName() == null || newCustomer.getFullName().isEmpty()) ||
+        if ((newCustomer.getFullName() == null || newCustomer.getFullName().isEmpty()) ||
                 (newCustomer.getAddress() == null || newCustomer.getAddress().isEmpty()) ||
                 (newCustomer.getEmail() == null || newCustomer.getEmail().isEmpty()) ||
                 (newCustomer.getPhoneNumber() == null || newCustomer.getPhoneNumber().isEmpty())
@@ -62,23 +62,23 @@ public class CustomerService {
         Customer newCustomer = customerDto.toCustomer();
 
         String textError = "The request came with the mandatory customer data missing or empty";
-        if(newCustomer.getFullName() != null){
-            if(newCustomer.getFullName().isEmpty()) throw new MissingDataException(textError);
+        if (newCustomer.getFullName() != null) {
+            if (newCustomer.getFullName().isEmpty()) throw new MissingDataException(textError);
             else oldCustomer.setFullName(newCustomer.getFullName());
         }
 
-        if(newCustomer.getPhoneNumber() != null){
-            if(newCustomer.getPhoneNumber().isEmpty()) throw new MissingDataException(textError);
+        if (newCustomer.getPhoneNumber() != null) {
+            if (newCustomer.getPhoneNumber().isEmpty()) throw new MissingDataException(textError);
             else oldCustomer.setPhoneNumber(newCustomer.getPhoneNumber());
         }
 
-        if(newCustomer.getAddress() != null){
-            if(newCustomer.getAddress().isEmpty()) throw new MissingDataException(textError);
+        if (newCustomer.getAddress() != null) {
+            if (newCustomer.getAddress().isEmpty()) throw new MissingDataException(textError);
             else oldCustomer.setAddress(newCustomer.getAddress());
         }
 
-        if(newCustomer.getEmail() != null){
-            if(newCustomer.getEmail().isEmpty()) throw new MissingDataException(textError);
+        if (newCustomer.getEmail() != null) {
+            if (newCustomer.getEmail().isEmpty()) throw new MissingDataException(textError);
             else oldCustomer.setEmail(newCustomer.getEmail());
         }
 
@@ -86,7 +86,6 @@ public class CustomerService {
     }
 
     public List<Customer> getAll() {
-        List<Customer> allCustomers = repository.findAll();
-        return allCustomers;
+        return repository.findAll();
     }
 }
